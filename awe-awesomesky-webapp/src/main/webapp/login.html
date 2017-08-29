@@ -1,0 +1,465 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>用户登录</title>
+	<link rel="shortcut icon" href="images/cont/1.png">
+	<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css"/>
+	<style type="text/css">
+		html,body{
+			margin:0px;
+			height:100%;
+			background-size:cover;
+			-moz-background-size:cover;
+			-webkit-background-size:cover;
+		}
+		html{overflow:hidden;}
+		/*Nav-bar*/
+		#nav-bar {
+			width: 100%;
+			background-color: rgba(10,10,10,0.15);
+			height: 50px;
+			position: absolute;
+			top:0px;
+		}
+		.nav-head {
+			width:100%;margin-left: auto;margin-right: auto;
+			height: 50px;
+		}
+		.sign-up-btn-small {
+			font-family: Helvetica, STHeiti;
+			font-size: 13px;
+			text-align: center;
+			line-height: 35px;
+			background-color: rgba(41,119,186,0.8);
+			color: #fff;
+			border-radius: 2px;
+			margin-right: 15px;
+			margin-top: 7px;
+			width:60px;
+			height: 35px;
+			overflow: hidden;
+			white-space: nowrap;
+			-webkit-transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			-moz-transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			float: left;
+			list-style:none;
+		}
+		.sign-in-btn-small {
+			list-style:none;
+			font-family: Helvetica, STHeiti;
+			font-size: 13px;
+			text-align: center;
+			line-height: 35px;
+			background-color: rgba(255,255,255,0.3);
+			color: #fff;
+			border-radius: 2px;
+			margin-right: 15px;
+			margin-top: 7px;
+			width:60px;
+			height: 35px;
+			overflow: hidden;
+			white-space: nowrap;
+			-webkit-transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			-moz-transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			float: left;
+			
+		}
+		/*Form head*/
+		#phoneLog{float: left; border-bottom: 1px solid #fff;font-size: 15px;padding: 10px 0 10px 0;width: 190px;color: #fff;}
+		#webLog{float: right;border-bottom: 1px solid rgba(50,50,50,0);font-size: 15px;padding: 10px 0 10px 0;width: 189px;color:#ccc;}
+		#phoneLog:hover,#webLog:hover{
+			cursor: pointer;
+		}
+		.selectLog .v-line{float: left;width: 1px;height: 43px;background-color: #323232;}
+		.selectLog:after{
+				clear:both;
+				content:"\200B";
+				display:block;
+				height:0;
+		}
+		.selectLog{
+			background-color: rgba(50,50,50,0.6);
+			border-bottom:1px solid rgba(50,50,50,1);
+		}
+		.selectLog >div:hover{
+			cursor: pointer;
+			color: white;
+		}
+		.login-input {
+			background-color: #fff; 
+			padding: 11px 10px 11px 13px;
+			display: block;
+			background-color: rgba(255,255,255,0.95);
+			border: 1px solid #fff;
+			margin: 0;
+			border: 0;
+			font-family: Helvetica, STHeiti;
+			font-size: 14px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			width: 300px;
+		}
+		.top-radius{
+			border-top-left-radius: 2px;
+			border-top-right-radius:2px;
+			border-bottom-left-radius: 0px;
+			border-bottom-right-radius:0px;
+		}
+
+		.bottom-radius{
+			border-top-left-radius: 0px;
+			border-top-right-radius:0px;
+			border-bottom-left-radius: 2px;
+			border-bottom-right-radius:2px;
+		}
+
+		/*Login btn*/
+		.login-in-btn {
+			font-size: 13px;
+			font-weight: 500;
+			line-height: 38px;
+			background-color: rgb(70,175,95);
+			background-color: rgba(70,175,95,0.9);
+			color: #fff;
+			border-radius: 2px;
+			width:300px;
+			height: 38px;
+			overflow: hidden;
+			white-space: nowrap;
+			-webkit-transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			-moz-transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			cursor: pointer;
+		}
+		.login-in-btn:focus, .login-in-btn:hover {
+		  background-color: rgb(90,225,125);
+			background-color: rgba(90,225,125,0.9);
+		}
+		/*Reg btn*/
+		.sign-up-btn {
+			font-size: 13px;
+			font-weight: 500;
+			line-height: 38px;
+			background-color: rgb(41,119,186);
+			background-color: rgba(41,119,186,0.9);
+			color: #fff;
+			border-radius: 2px;
+			width:300px;
+			height: 38px;
+			overflow: hidden;
+			white-space: nowrap;
+			-webkit-transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			-moz-transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			transition: all .25s cubic-bezier(.165,.84,.44,1),opacity 1ms linear;
+			cursor: pointer;
+		}
+		.sign-up-btn:focus, .sign-up-btn:hover {
+		  background-color: rgb(61,139,226);
+			background-color: rgba(61,139,226,0.9);
+		}
+		/*WeiXin btn*/
+		.other-wrap{overflow: hidden;margin-top: 20px;}
+		.other-wrap .social-signup{float: left;margin-top: -5px;}
+		.other-wrap .social-signup span {
+			color: #ccc;
+			font-size: 12px;
+			vertical-align: middle;
+			
+			
+		}
+		.other-wrap .social-signup a {
+			display: inline-block;
+			color: #ccc;
+			margin-left: 10px;
+		}
+		.other-wrap .social-signup i {
+			vertical-align: middle;
+			font-size: 16px;
+			cursor: pointer;
+			-webkit-transition: all 300ms ease-in-out;
+			-moz-transition: all 300ms ease-in-out;
+			transition: all 300ms ease-in-out;
+		}
+		.other-wrap .social-signup i:hover {
+			color: #fff;
+		}
+		/*Forget pwd*/
+		.other-wrap .forget-pwd{float: right;}
+		.other-wrap .forget-pwd a {
+			margin-left: 3px;
+			margin-top: 20px;
+			color: #ccc;
+			font-size: 12px;
+			-webkit-transition: all 300ms ease-in-out;
+			-moz-transition: all 300ms ease-in-out;
+			transition: all 300ms ease-in-out;
+		}
+		.other-wrap .forget-pwd a:hover {
+			color: #fff;
+		}
+		#reg-div{display:none;}
+	</style>
+</head>
+<body id="particles-js" style="background-image: url(&quot;images/p_04.jpg&quot;);">
+	<script src="http://cdn.maxjia.com/js/particles.min.js"></script>
+	<script type="text/javascript">
+		particlesJS('particles-js',
+		  {
+			"particles": {
+			  "number": {
+				"value": 110,
+				"density": {
+				  "enable": true,
+				  "value_area": 800
+				}
+			  },
+			  "color": {
+				"value": "#ffffff"
+			  },
+			  "shape": {
+				"type": "circle",
+				"stroke": {
+				  "width": 0,
+				  "color": "#000000"
+				},
+				"polygon": {
+				  "nb_sides": 5
+				},
+				"image": {
+				  "src": "img/github.svg",
+				  "width": 100,
+				  "height": 100
+				}
+			  },
+			  "opacity": {
+				"value": 0.5,
+				"random": false,
+				"anim": {
+				  "enable": false,
+				  "speed": 1,
+				  "opacity_min": 0.1,
+				  "sync": false
+				}
+			  },
+			  "size": {
+				"value": 1,
+				"random": true,
+				"anim": {
+				  "enable": false,
+				  "speed": 20,
+				  "size_min": 0.1,
+				  "sync": false
+				}
+			  },
+			  "line_linked": {
+				"enable": true,
+				"distance": 40,
+				"color": "#fff",
+				"opacity": 1,
+				"width": 1
+			  },
+			  "move": {
+				"enable": true,
+				"speed": 3,
+				"direction": "none",
+				"random": false,
+				"straight": false,
+				"out_mode": "out",
+				"attract": {
+				  "enable": false,
+				  "rotateX": 600,
+				  "rotateY": 1200
+				}
+			  }
+			},
+			"interactivity": {
+			  "detect_on": "canvas",
+			  "events": {
+				"onhover": {
+				  "enable": true,
+				  "mode": "grab"
+				},
+				"onclick": {
+				  "enable": true,
+				  "mode": "push"
+				},
+				"resize": true
+			  },
+			  "modes": {
+				"grab": {
+				  "distance": 120,
+				  "line_linked": {
+					"opacity": 1
+				  }
+				},
+				"bubble": {
+				  "distance": 400,
+				  "size": 40,
+				  "duration": 2,
+				  "opacity": 8,
+				  "speed": 3
+				},
+				"repulse": {
+				  "distance": 300
+				},
+				"push": {
+				  "particles_nb": 4
+				},
+				"remove": {
+				  "particles_nb": 2
+				}
+			  }
+			},
+			"retina_detect": true,
+			"config_demo": {
+			  "hide_card": false,
+			  "background_color": "#b61924",
+			  "background_image": "",
+			  "background_position": "50% 50%",
+			  "background_repeat": "no-repeat",
+			  "background_size": "cover"
+			}
+		  }
+
+		);
+		setInterval(function(){
+			var num = parseInt(Math.random()*5+1);
+			document.body.style.backgroundImage="url(images/p_0"+num+".jpg)";
+		},18000);
+
+		function show_div(){
+			document.getElementById("phoneNum").setAttribute("name","phoneNum");
+			document.getElementById("phoneNum").setAttribute("placeholder","手机号码");
+			document.getElementById("phoneLog").style.cssText="border-bottom: 1px solid white;color: white;"	
+			document.getElementById("webLog").style.cssText="border-bottom: 1px solid rgba(50,50,50,0);"	
+		}
+		function show_div1(){
+			document.getElementById("phoneNum").setAttribute("name","username");
+			document.getElementById("phoneNum").setAttribute("placeholder","用户名");
+			document.getElementById("webLog").style.cssText="border-bottom: 1px solid white;color: white;"
+			document.getElementById("phoneLog").style.cssText="border-bottom: 1px solid rgba(50,50,50,0);"
+		}
+
+		function to_reg(){
+			document.getElementById("login-div").style.display="none";
+			document.getElementById("reg-div").style.display="block";
+		}
+
+		function to_login() {
+			document.getElementById("reg-div").style.display="none";
+			document.getElementById("login-div").style.display="block";
+		}
+	</script>
+	
+	<!-- background -->
+	<canvas class="particles-js-canvas-el" width="147" height="758" style="width: 100%; height: 100%;"></canvas>
+
+	<!-- nav -->
+	<div id="nav-bar">
+        <div class="nav-head">
+            <a href="/home/"><div style="margin-top: 12px;margin-left: 30px;float: left;"><img src="images/login_logo.png" style="height: 40px;margin-top:-10px;"></div></a>
+            <li class="sign-up-btn-small" style="float: right;margin-right: 30px;">注册</li>
+            <li class="sign-in-btn-small" style="float: right;">登陆</li>
+        </div>
+    </div>
+
+	<!-- Login Form -->
+	 <div id="login-div" style="z-index: 1000;position: absolute;top:20%;left :50%;margin: 0 0 0 -190px;">
+        <div style="margin-left: auto;margin-right: auto;width: 300px;text-align: center;background-color: rgba(50,50,50,0.6);padding: 20px 40px 60px 40px;position: relative;">
+			<div class="selectLog" style="position: absolute;left: 0px;top: -44px;width: 380px;">
+				<div id="phoneLog" onclick="show_div()">手机账号登录</div>
+				<div class="v-line"></div>
+				<div id="webLog" onclick="show_div1()">网站账号登录</div>
+			</div>
+			<img src="images/awe_logo.png" style="width:120px;margin-bottom: 5px;">
+			<div style="margin-top: 5px;margin-bottom: 20px;color:#ccc;font-size: 14px;font-weight: 600;">天眼数据平台</div>
+			<form action="/accounts/login/" id="login_form" method="post" name="rsa" style="font-size: 12px;">
+					<input id="phoneNum" name="phoneNum" type="text" placeholder="手机号码" style="display: block; width:300px;border-bottom: 1px solid rgb(227,227,227);" class="login-input top-radius">				
+					<input id="password" name="password" type="password" style="width:300px;margin-bottom:20px;" class="login-input bottom-radius" placeholder="密码" >		
+			</form>
+			<div style="margin-left: 0px;margin-bottom: 5px;color:#ec3627"></div>
+			<div id="login-btn" class="login-in-btn" style="margin-right: 10px;">
+				登录
+			</div>
+			<div class="sign-up-btn" onclick="to_reg()" style="margin-right: 10px;margin-top: 10px;">
+				创建我的AweSky账号
+			</div>
+
+			<div class="other-wrap">
+				<div class="social-signup">
+					<span>社交账号登录</span>
+					<a href="https://github.com/Meinin"><i class="fa fa-github"></i></a>
+				</div>
+				<div class="forget-pwd">
+					<a href="/accounts/find_password/input/">忘记密码?</a>
+				</div>
+			</div>
+			<div style="position: absolute;right:40px;bottom: 20px;"><a href="index.html" style="color: rgb(152, 152, 152);color: #ccc;
+			font-size: 13px;">返回</a></div>
+		</div>
+	 </div>
+
+	 <!-- Reg Form -->
+	<div id="reg-div" style="z-index: 1000;position: absolute;top:13%;left :50%;margin: 0 0 0 -190px;">
+        <div style="margin-left: auto;margin-right: auto;width: 300px;text-align: center;background-color: rgba(50,50,50,0.6);padding: 20px 40px 60px 40px;position: relative;">
+            <div style="margin-top: 5px;margin-bottom: 20px;color:#ccc;font-size: 14px;font-weight: 600;">输入注册信息</div>
+			<div style="margin-left: 0px;margin-bottom: 10px;">
+				<font class="login-reply"></font>
+			</div>
+			<div style="display: block;height: 290px;margin-bottom: 10px;">
+				<form action="/accounts/register/" method="post" id="reg_form" name="rsa">
+					<input type='hidden' name='csrfmiddlewaretoken' value='PFpIGIPIf37bnaAcCm3S2TQMJZUekVT1' />
+					<input name="usernameCipherb64" type="hidden" value="">
+					<input name="passwordCipherb64" type="hidden" value="">
+					<input name="repasswordCipherb64" type="hidden" value="">
+				</form>
+				<div style="float: left;">
+					<div style="width: 290px;float: left;line-height: 37px;text-align: left;padding-left: 5px;font-size:12px;color:#ccc;">Email(用户名): </div>
+					<input id="username" class="login-input all-radius" type="text" name="username" placeholder="请输入正确的邮箱" value="">
+				</div>
+				<div style="float: left;">
+					<div style="width: 290px;float: left;line-height: 37px;text-align: left;padding-left: 5px;font-size:12px;color:#ccc;">密码: </div>
+					<input id="rpassword" class="login-input all-radius" type="password" name="password" placeholder="不少于6个字符">
+				</div>
+				<div style="float: left;">
+					<div style="width: 290px;float: left;line-height: 37px;text-align: left;padding-left: 5px;font-size:12px;color:#ccc;">确认密码: </div>
+					<input id="re-rpassword" class="login-input all-radius" type="password" name="password2" placeholder="确认密码">
+				</div>
+				<div id="reg-btn" type="submit" class="login-in-btn" style="margin-top: 20px;float: left;">
+					注册
+				</div>
+			</div>
+			<div style="position: absolute;right:40px;bottom: 20px;"><a href="javascript:to_login()" style="color: rgb(152, 152, 152);font-size:14px;" >返回</a></div>
+        </div>
+    </div>
+
+	 <!-- Font -->
+	<div style="position: fixed;bottom:20px;width: 100%;">
+        <div class="footbar" style="padding-bottom:10px;text-align: center;">        
+            <img src="images/logo_01.png" style="width:40px;margin: 0 auto;" class="max_logo breath">
+                <div style="position: absolute;left:0px;bottom:10px;">
+                   
+                    <div style="float:left;margin-left: 20px"><a target="_blank" href="mailto:ning@dotamax.com"><i title="商务合作" class="fa fa-envelope-o" style="font-size: 16px;padding-top: 1px;"></i></a></div>
+                    
+                    <div style="float:left;margin-left: 20px"><a target="_blank" href="/app/"><i title="iOS App" class="fa fa-apple" style="font-size: 18px"></i></a></div>
+                    <div style="float:left;margin-left: 20px"><a target="_blank" href="/app/"><i title="Android App" class="fa fa-android" style="font-size: 18px"></i></a></div>
+                    <div style="float:left;margin-left: 20px"><a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=ef26fe7efd134659b38b044ae44ae8342c20f1654d9c372fd094f96bd004819e"><i title="反馈群:74188215" class="fa fa-qq" style="font-size: 16px;padding-top: 2px;"></i></a></div>
+					
+                </div>
+                <div style="position: absolute;right:0px;bottom:10px;">
+                  	<div style="float:right;margin-right: 20px"><a target="_blank" href="/status/"><i title="状态" class="fa fa-heartbeat" style="font-size: 18px"></i></a></div>
+                    <div style="float:right;margin-right: 20px"><a target="_blank" href="/summary/"><i title="统计" class="fa fa-bar-chart" style="font-size: 18px"></i></a></div>
+                    
+                    <div style="float:right;margin-right: 20px"><a target="_blank" href="http://weibo.com/5606942020/profile?topnav=1&amp;wvr=6"><i title="新浪微博" class="fa fa-weibo" style="font-size: 18px"></i></a></div>
+                    <div style="float:right;margin-right: 20px"><a target="_blank" href="http://t.qq.com/dotamax?preview "><i title="腾讯微博" class="fa fa-tencent-weibo" style="font-size: 18px"></i></a></div>                   
+                </div>
+          </div>
+      </div>
+	<script>
+		
+	</script>
+	</body>
+</html>

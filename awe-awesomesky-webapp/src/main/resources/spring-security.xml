@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context" 
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+    <context:component-scan base-package="org.awesky.webapp.auth"/>
+
+    <http pattern="/css/**" security="none" />
+    <http pattern="/js/**" security="none" />
+    <http pattern="/images/**" security="none" />
+    <http pattern="/img/**" security="none" />
+    <http pattern="/audio/**" security="none" />
+    <http pattern="/fonts/**" security="none" />
+    <http pattern="/font/**" security="none" />
+    <http pattern="/bootstrap/**" security="none" />
+    <http pattern="/toLogin" security="none"/>
+    <http pattern="/login" security="none"/>
+    <http pattern="/login.html" security="none"/>
+    <http pattern="/index.html" security="none"/>
+    <http pattern="/reg" security="none"/>
+    <http pattern="/upload" security="none"/>
+
+    <http use-expressions="true" auto-config="false" entry-point-ref="mainAuthenticationEntryPoint">
+         <intercept-url pattern="/**" access="isAuthenticated()" />
+         <access-denied-handler error-page="/error/error.html"/>
+          <!--会话管理-->
+         <session-management invalid-session-url="/login.html" session-fixation-protection="none">
+             <concurrency-control max-sessions="5"
+                 error-if-maximum-exceeded="true" />
+         </session-management>
+         <headers>
+             <frame-options policy="SAMEORIGIN"/>
+         </headers>
+         <custom-filter ref="mainSecurityFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+    </http>
+
+    <beans:bean id="mainAuthenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+     <beans:constructor-arg index="0" value="/login.jsp"/>
+    </beans:bean>
+
+    <authentication-manager alias="authenticationManager">
+     <authentication-provider user-service-ref="mainUserDetailServiceImpl" />
+    </authentication-manager>
+
+</beans:beans>
