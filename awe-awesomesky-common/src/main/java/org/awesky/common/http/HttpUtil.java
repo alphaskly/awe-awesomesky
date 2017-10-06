@@ -30,6 +30,28 @@ public class HttpUtil {
 	private String proxyHost;
 	private Integer proxyPort;
 
+	public static enum RequetMethod {
+		POST("POST"),
+		GET("GET"),
+		PUT("PUT"),
+		DELETE("DELETE");
+
+		private String method;
+
+		private RequetMethod(String method) {
+			this.method = method;
+		}
+
+		public String getMethod() {
+			return this.method;
+		}
+	}
+
+	public static final String POST = "POST";
+	public static final String GET = "GET";
+	public static final String PUT = "PUT";
+	public static final String DELETE = "DELETE";
+
 	public HttpUtil(){ }
 	
 	public HttpUtil(String proxyHost, Integer proxyPort) {
@@ -106,7 +128,7 @@ public class HttpUtil {
 	}
 	
 	//普通请求
-	public static String doHttp(String strUrl,String strJson) {
+	public static String doHttp(String strUrl,String strJson, RequetMethod method) {
 		String strRet = "";
 		OutputStream os = null;
 	 	try {
@@ -114,16 +136,17 @@ public class HttpUtil {
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
-			connection.setRequestMethod("POST");
+			connection.setRequestMethod(method.getMethod());
 			connection.setUseCaches(false);
 			connection.setInstanceFollowRedirects(true);
 			connection.setRequestProperty("Content-Type", "application/json");
 			connection.setConnectTimeout(30000);  
 			connection.setReadTimeout(30000);     
-			connection.connect();       
-			os = connection.getOutputStream(); 
-			os.write(strJson.getBytes("UTF-8")); 			
-			
+			connection.connect();
+			if(strJson != null && !"".equals(strJson.trim())) {
+				os = connection.getOutputStream();
+				os.write(strJson.getBytes("UTF-8"));
+			}
 			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			String line;
 			while ((line = in.readLine()) != null) {
@@ -212,7 +235,7 @@ public class HttpUtil {
 		String smsTxt = "{\"strText\":\"999999Ψ1008Ψ15Ψ811748Ψ13687018680Ψ3\"}";
 		//smsTxt = "{\"strText\":\"13687018680Ψhello\"}";
 		String url = "http://115.29.14.115:9524/JsonService/SendSmsMessage";
-		String rs = doHttp(url,smsTxt);
+		String rs = doHttp(url,smsTxt, RequetMethod.POST);
 		System.out.println(rs);
 	}
 	
